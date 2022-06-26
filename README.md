@@ -1,0 +1,4 @@
+# Stock-Portfoli-Management-tool-using-Python-SQL
+
+## Intrduction
+In modern age many individuals are investing in the stake market for better return as compared to FDs and Life insurance. According to the many investors the best type of investment is the diversify investment, as we increase the diversification of our investment, our risk associated with net investment will also goes down with it. For big corporates, managing this diversified investment is relatively easy because of the men power they have, but for individual like me who has their study going on and family, hence managing and tracking this portfolio is quiet challenging. So, I am working on the Python/SQL project in which my computer will automatically calculate my return on my stake purchase and give me overall update at the end of the day. The code will automatically grab stake price from yahoo finance web site using Python web scrapping library beautiful soup.   
