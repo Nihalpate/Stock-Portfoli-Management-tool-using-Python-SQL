@@ -1,7 +1,18 @@
 
 
+from dbm import _Database
+from venv import create
+import mysql.connector
 
-def scrapper(company_name):
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "Nihal@301197"
+ )
+
+
+
+def scrapper(company_code):
     #company_name = input("Enter the company code")
 
     # import libraries 
@@ -11,7 +22,7 @@ def scrapper(company_name):
     import time 
     from datetime import datetime
 
-    url = "https://www.cnbc.com/quotes/"+ company_name
+    url = "https://www.cnbc.com/quotes/"+ " " + company_code 
     now =  datetime.now()
 
     # have to defind the user agent as below otherwise you will ban from the wabsite because website might recognize you as robort
@@ -24,6 +35,10 @@ def scrapper(company_name):
 
     find = soup.find_all("div", class_ = "QuoteStrip-lastPriceStripContainer")
     find_1 = soup.find_all("div", class_ = "QuoteStrip-quoteStripSubHeader")
+    find_3 = soup.find("span", class_ = "QuoteStrip-name").string
+    
+    company_name = find_3
+    
     for line in find:
         stake_price = line.find("span").string
         
@@ -31,8 +46,11 @@ def scrapper(company_name):
         currncy = line_1.find_all("span")
         for line in currncy:
             sing = (line.get_text())
-    return print(stake_price + sing + str(now) )
+    return stake_price, sing, now
 
 
-company_name = input("Enter The company Name")
-scrapper(company_name)
+company_code = input("Enter The company Name")
+scrapper(company_code)
+
+nihal = mydb.cursor()
+nihal.execute("USE nihal")
